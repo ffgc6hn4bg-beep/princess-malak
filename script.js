@@ -44,3 +44,10 @@ next.disabled = false;
 next.style.opacity = "1";
 
 next.style.cursor = "pointer";
+document.getElementById("nextBtn").onclick = function(){
+
+    document.querySelector(".container").style.display="none";
+
+    document.getElementById("giftPage").style.display="block";
+
+};
