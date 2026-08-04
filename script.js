@@ -41,7 +41,19 @@ for(let i=0;i<7;i++){
 let dwarf=document.createElement("div");
 
 dwarf.className="dwarf sleep";
-
+d.innerHTML=`
+<div class="hat"></div>
+<div class="head">
+<div class="eye left"></div>
+<div class="eye right"></div>
+</div>
+<div class="beard"></div>
+<div class="bodyPart"></div>
+<div class="arm left"></div>
+<div class="arm right"></div>
+<div class="leg left"></div>
+<div class="leg right"></div>
+`;
 dwarf.style.left=(15+i*32)+"px";
 
 let bubble=document.createElement("div");
