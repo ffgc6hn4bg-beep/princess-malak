@@ -1,40 +1,46 @@
 let birthday = new Date(2026, 7, 15, 0, 0, 0).getTime();
 
 
-setInterval(function(){
+function updateTimer(){
 
-    let now = new Date().getTime();
+let now = new Date().getTime();
 
-    let distance = birthday - now;
-
-
-    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-
-    let hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-
-    let minutes = Math.floor((distance / (1000 * 60)) % 60);
-
-    let seconds = Math.floor((distance / 1000) % 60);
+let distance = birthday - now;
 
 
+let days = Math.floor(distance / (1000 * 60 * 60 * 24));
 
-    document.getElementById("days").innerHTML = days;
+let hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
 
-    document.getElementById("hours").innerHTML = hours;
+let minutes = Math.floor((distance / (1000 * 60)) % 60);
 
-    document.getElementById("minutes").innerHTML = minutes;
-
-    document.getElementById("seconds").innerHTML = seconds;
+let seconds = Math.floor((distance / 1000) % 60);
 
 
 
-},1000);
+document.getElementById("days").innerHTML = days;
+
+document.getElementById("hours").innerHTML = hours;
+
+document.getElementById("minutes").innerHTML = minutes;
+
+document.getElementById("seconds").innerHTML = seconds;
+
+
+}
+
+
+setInterval(updateTimer,1000);
+
+updateTimer();
 
 
 
-// فتح NEXT مؤقتًا أثناء تصميم الموقع
-window.onload = function(){
+// فتح NEXT مؤقتًا عشان نكمل التصميم
+let next = document.getElementById("nextBtn");
 
-    document.getElementById("nextBtn").disabled = false;
+next.disabled = false;
 
-};
+next.style.opacity = "1";
+
+next.style.cursor = "pointer";
