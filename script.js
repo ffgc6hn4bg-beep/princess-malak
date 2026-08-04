@@ -1,41 +1,47 @@
-let birthday = new Date("August 15, 2026 00:00:00").getTime();
+const birthday = new Date("2026-08-15T00:00:00").getTime();
+
+const timer = setInterval(() => {
+
+    const now = new Date().getTime();
+
+    const distance = birthday - now;
 
 
-let timer = setInterval(function(){
+    if (distance <= 0) {
+
+        document.getElementById("timer").innerHTML = 
+        "Happy Birthday Malak ❤️";
+
+        document.getElementById("nextBtn").disabled = false;
+
+        clearInterval(timer);
+
+        return;
+    }
 
 
-let now = new Date().getTime();
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
 
-let distance = birthday - now;
+    const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) /
+        (1000 * 60 * 60)
+    );
 
+    const minutes = Math.floor(
+        (distance % (1000 * 60 * 60)) /
+        (1000 * 60)
+    );
 
-let days = Math.floor(distance/(1000*60*60*24));
-
-let hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-
-let minutes = Math.floor((distance%(1000*60*60))/(1000*60));
-
-let seconds = Math.floor((distance%(1000*60))/1000);
-
-
-document.getElementById("days").innerHTML=days;
-document.getElementById("hours").innerHTML=hours;
-document.getElementById("minutes").innerHTML=minutes;
-document.getElementById("seconds").innerHTML=seconds;
+    const seconds = Math.floor(
+        (distance % (1000 * 60)) /
+        1000
+    );
 
 
-
-if(distance <=0){
-
-document.getElementById("nextBtn").disabled=false;
-
-document.getElementById("timer").innerHTML=
-"Happy Birthday Malak ❤️";
-
-
-clearInterval(timer);
-
-}
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
 
 
 },1000);
