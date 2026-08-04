@@ -1,139 +1,139 @@
-const sky = document.getElementById("sky");
+// ===== النجوم =====
 
-// ⭐ النجوم
-for (let i = 0; i < 150; i++) {
-    const star = document.createElement("div");
-    star.className = "star";
+const stars = document.getElementById("stars");
 
-    const size = Math.random() * 3 + 1;
+for(let i=0;i<180;i++){
 
-    star.style.width = size + "px";
-    star.style.height = size + "px";
-    star.style.left = Math.random() * 100 + "%";
-    star.style.top = Math.random() * 100 + "%";
-    star.style.animationDelay = Math.random() * 2 + "s";
+    const star=document.createElement("div");
 
-    sky.appendChild(star);
+    star.className="star";
+
+    const size=Math.random()*3+1;
+
+    star.style.width=size+"px";
+    star.style.height=size+"px";
+
+    star.style.left=Math.random()*100+"%";
+    star.style.top=Math.random()*100+"%";
+
+    star.style.animationDelay=Math.random()*3+"s";
+
+    stars.appendChild(star);
+
 }
 
-// 🏠 الكوخ
-const house = document.querySelector(".house");
+// ===== الأقزام =====
 
-// 🧙 الأقزام
-const dwarfs = [];
+const dwarfsContainer=document.getElementById("dwarfs");
 
-const snores = [
-    "خرر 😴",
-    "ززز 💤",
-    "هممم 😪",
-    "😴",
-    "💭",
-    "😪",
-    "💤"
+const dialog=document.getElementById("dialogText");
+
+const button=document.getElementById("nextButton");
+
+const talks=[
+
+"😴 خررررر...",
+
+"🥱 خمس دقايق كمان...",
+
+"😪 سيبونا ننام...",
+
+"🍗 أنا كنت بحلم بالأكل...",
+
+"😳 يا جدعان... اصحوا بسرعة!!",
+
+"👑 سمو الأميرة ملك وصلت!!",
+
+"🫡 بسرعة... قفوا انتباه."
+
 ];
 
-for (let i = 0; i < 7; i++) {
+const dwarfs=[];
 
-    const dwarf = document.createElement("div");
-    dwarf.className = "dwarf sleep";
+for(let i=0;i<7;i++){
 
-    dwarf.innerHTML = `
-        <div class="hat"></div>
+let d=document.createElement("div");
 
-        <div class="head">
-            <div class="eye left"></div>
-            <div class="eye right"></div>
-        </div>
+d.className="dwarf";
 
-        <div class="beard"></div>
+d.style.left=(i*50)+"px";
 
-        <div class="bodyPart"></div>
+d.innerHTML=`
 
-        <div class="arm left"></div>
-        <div class="arm right"></div>
+<div class="hat"></div>
 
-        <div class="leg left"></div>
-        <div class="leg right"></div>
-    `;
+<div class="head">
 
-    dwarf.style.left = (10 + i * 34) + "px";
+<div class="eye left"></div>
 
-    const bubble = document.createElement("div");
-    bubble.className = "bubble";
-    bubble.innerHTML = snores[i];
+<div class="eye right"></div>
 
-    dwarf.appendChild(bubble);
+</div>
 
-    house.appendChild(dwarf);
+<div class="beard"></div>
 
-    dwarfs.push({
-        body: dwarf,
-        bubble: bubble
-    });
+<div class="body"></div>
+
+`;
+
+dwarfsContainer.appendChild(d);
+
+dwarfs.push(d);
 
 }
 
-// 💬 يتكلم
-function speak(index, text) {
+// ===== الحوار =====
 
-    dwarfs[index].body.classList.remove("sleep");
+let step=0;
 
-    dwarfs[index].bubble.style.display = "block";
+function nextScene(){
 
-    dwarfs[index].bubble.innerHTML = text;
+dialog.style.display="block";
+
+dialog.innerHTML=talks[step];
+
+if(step==4){
+
+dwarfs.forEach((d,index)=>{
+
+d.style.transform="translateY(-15px)";
+
+});
 
 }
 
-// 🎬 المشهد
+if(step==5){
 
-setTimeout(() => {
+dwarfs.forEach((d,index)=>{
 
-    speak(0, "😳 يا جدعان... اصحوا بسرعة!!");
+d.style.left=(index*45+20)+"px";
 
-}, 2500);
+});
 
-setTimeout(() => {
+}
 
-    speak(1, "🥱 في إيه يابني؟");
+if(step==6){
 
-}, 5000);
+button.style.display="block";
 
-setTimeout(() => {
+}
 
-    speak(2, "😒 سيبونا ننام...");
+step++;
 
-}, 7000);
+if(step<talks.length){
 
-setTimeout(() => {
+setTimeout(nextScene,2500);
 
-    speak(3, "🍗 أنا كنت بحلم بالأكل!");
+}
 
-}, 9000);
+}
 
-setTimeout(() => {
+setTimeout(nextScene,2500);
 
-    speak(4, "😳 هو حصل إيه؟");
+// ===== الزر =====
 
-}, 11000);
+button.onclick=()=>{
 
-setTimeout(() => {
+location.href="message.html";
 
-    speak(5, "👑 سمو الأميرة ملك وصلت!!");
-
-}, 13500);
-
-setTimeout(() => {
-
-    speak(6, "🫡 بسرعة... قفوا صف!");
-
-}, 16000);
-
-setTimeout(() => {
-
-    dwarfs.forEach(d => {
-
-        d.bubble.innerHTML = "🎉 كل سنة وانتي طيبة يا سمو الأميرة ملك";
-
-    });
-
-}, 19000);
+};
