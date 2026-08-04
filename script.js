@@ -23,3 +23,4 @@ setInterval(function(){
 
 
 },1000);
+document.getElementById("nextBtn").disabled = false;
