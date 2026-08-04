@@ -1,57 +1,222 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>رسالة إلى سمو الأميرة ملك 👑</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>سمو الأميرة ملك 👑</title>
 
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Tahoma;
+}
+
 body{
-    margin:0;
-    background:#081421;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    font-family:Arial;
-    text-align:center;
+overflow:hidden;
+height:100vh;
+background:linear-gradient(#061427,#102f56);
+display:flex;
+justify-content:center;
+align-items:flex-end;
 }
 
-button{
-    padding:15px 35px;
-    border:none;
-    border-radius:40px;
-    background:#ff4f8b;
-    color:white;
-    font-size:20px;
+.sky{
+position:absolute;
+width:100%;
+height:100%;
+overflow:hidden;
 }
 
-h1{
-    font-size:42px;
+.star{
+position:absolute;
+background:white;
+border-radius:50%;
+animation:blink 2s infinite;
 }
+
+@keyframes blink{
+
+0%{opacity:.2;}
+50%{opacity:1;}
+100%{opacity:.2;}
+
+}
+
+.moon{
+position:absolute;
+top:70px;
+left:70px;
+width:90px;
+height:90px;
+background:#fff8c9;
+border-radius:50%;
+box-shadow:0 0 40px #fff8c9;
+}
+
+.house{
+
+width:260px;
+height:190px;
+background:#7a5032;
+border-radius:15px 15px 0 0;
+position:relative;
+margin-bottom:80px;
+
+}
+
+.roof{
+
+position:absolute;
+top:-90px;
+left:-20px;
+
+width:300px;
+height:100px;
+
+background:#8b1d1d;
+
+clip-path:polygon(50% 0%,100% 100%,0 100%);
+
+}
+
+.door{
+
+position:absolute;
+
+bottom:0;
+left:95px;
+
+width:70px;
+height:105px;
+
+background:#4b2d16;
+
+border-radius:10px 10px 0 0;
+
+}
+
+.window{
+
+position:absolute;
+
+width:45px;
+height:45px;
+
+background:gold;
+
+top:55px;
+
+box-shadow:0 0 20px gold;
+
+}
+
+.w1{
+
+left:25px;
+
+}
+
+.w2{
+
+right:25px;
+
+}
+
+.text{
+
+position:absolute;
+
+top:40px;
+
+width:100%;
+
+text-align:center;
+
+color:white;
+
+font-size:28px;
+
+font-weight:bold;
+
+text-shadow:0 0 10px black;
+
+animation:fade 2s infinite alternate;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:.5;
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}
+
 </style>
 
 </head>
 
 <body>
 
-<div>
+<div class="sky" id="sky"></div>
 
-<h1>👑 سمو الأميرة ملك 👑</h1>
+<div class="moon"></div>
 
-<p>هناك رسالة ملكية في انتظار سموك ❤️</p>
+<div class="text">
 
-<button onclick="start()">
-فتح الرسالة
-</button>
+🌙 مملكة الأمير أحمد 🌙
+
+</div>
+
+<div class="house">
+
+<div class="roof"></div>
+
+<div class="window w1"></div>
+
+<div class="window w2"></div>
+
+<div class="door"></div>
 
 </div>
 
 <script>
-function start(){
-alert("مرحبًا بسمو الأميرة ملك 🌹");
+
+const sky=document.getElementById("sky");
+
+for(let i=0;i<150;i++){
+
+let s=document.createElement("div");
+
+s.className="star";
+
+let size=Math.random()*3+1;
+
+s.style.width=size+"px";
+
+s.style.height=size+"px";
+
+s.style.left=Math.random()*100+"%";
+
+s.style.top=Math.random()*100+"%";
+
+s.style.animationDelay=Math.random()*2+"s";
+
+sky.appendChild(s);
+
 }
+
 </script>
 
 </body>
