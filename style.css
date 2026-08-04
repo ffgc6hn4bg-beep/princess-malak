@@ -4,7 +4,7 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(#020024,#090979,#000);
+    background:linear-gradient(135deg,#12001f,#3b0a45,#000);
     color:white;
     font-family:cursive;
     overflow:hidden;
