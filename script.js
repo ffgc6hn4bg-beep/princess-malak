@@ -1,5 +1,6 @@
 let birthday = new Date(2026, 7, 15, 0, 0, 0).getTime();
 
+
 setInterval(function(){
 
     let now = new Date().getTime();
@@ -16,11 +17,24 @@ setInterval(function(){
     let seconds = Math.floor((distance / 1000) % 60);
 
 
+
     document.getElementById("days").innerHTML = days;
+
     document.getElementById("hours").innerHTML = hours;
+
     document.getElementById("minutes").innerHTML = minutes;
+
     document.getElementById("seconds").innerHTML = seconds;
 
 
+
 },1000);
-document.getElementById("nextBtn").disabled = false;
+
+
+
+// فتح NEXT مؤقتًا أثناء تصميم الموقع
+window.onload = function(){
+
+    document.getElementById("nextBtn").disabled = false;
+
+};
